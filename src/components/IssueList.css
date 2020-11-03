@@ -1,0 +1,20 @@
+.label{
+  padding: 0 7px;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.Issue {
+  border: 1px solid #ccc;
+  width:95%;
+  max-width: 100%;
+  margin: 0 auto
+}
+
+.comment {
+  padding: 0 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
