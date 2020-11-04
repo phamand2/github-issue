@@ -15,7 +15,9 @@ function Issue(props) {
               <span className='label 'style={{backgroundColor:'#' + label.color}}>{label.name}</span>))}
 
               <div className='comment'>
-                <a href={issue.comments_url} ><i class="fas fa-comments"></i>{issue.comments}</a>
+                {issue.comments > 0 && (
+                  <a href={issue.comments_url} ><i class="fas fa-comments"></i>{issue.comments}</a>
+                )}
               </div>
       </div>
     </div>
