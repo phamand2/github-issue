@@ -12,7 +12,6 @@ function IssueList() {
   useEffect(()=>{
     axios.get('https://api.github.com/repos/facebook/create-react-app/issues')
     .then(res => {
-      console.log(res)
       setIssues(res.data)
     })
     .catch(err =>{
