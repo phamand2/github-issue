@@ -10,15 +10,14 @@ function IssueList() {
 
   
   useEffect(()=>{
-    axios.get('https://api.github.com/repos/facebook/create-react-app/issues')
-    .then(res => {
-      setIssues(res.data)
-    })
-    .catch(err =>{
-      console.log(err)
-    })
+  getIssues()
   }, [])
 
+
+  const getIssues = async () => {
+    const issues = await axios.get('https://api.github.com/repos/facebook/create-react-app/issues');
+    setIssues(issues.data)
+  }
 
 
 

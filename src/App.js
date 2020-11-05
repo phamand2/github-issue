@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import './App.css';
 import IssueList from './components/IssueList';
-import {BrowserRouter as Router, Switch, Route, Link, Redirect}from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Link, Redirect}from 'react-router-dom';
 import IssueByNumber from './components/IssueByNumber';
 
 
@@ -22,11 +22,12 @@ function App() {
         : (<li><button onClick={() => {setLoggedIn(true)}}>Log In</button></li>)
       }
     </ul>
+    
     <div>
       <Switch>
 
         <Route exact path="/">
-          <h1>Home</h1>
+          <h1>Home</h1> 
         </Route>
 
         { loggedIn && (

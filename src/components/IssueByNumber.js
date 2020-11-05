@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import Markdown from 'react-markdown';
+import './IssueByNumber.css'
+import Moment from 'react-moment'
 
 
 function IssueByNumber() {
@@ -8,27 +11,27 @@ function IssueByNumber() {
   const [issue, setIssue] = useState(null);
 
 
-
   useEffect(()=>{
-    axios.get(`https://api.github.com/repos/facebook/create-react-app/issues/${number}`)
-    .then(res => {
-      setIssue(res.data)
-    })
-    .catch(err =>{
-      console.log(err)
-    })
-  })
+  getIssues()
+  },[])
+
+  const getIssues = async () => {
+    const issues = await axios.get(`https://api.github.com/repos/facebook/create-react-app/issues/${number}`);
+    setIssue(issues.data)
+  }
+
 
 
   return (
     <>
-      <h1>Issues By Number: {number}</h1>
-      <div>
+      <div className='IssueDetail'>
         {issue && (
-          <>
-          <h2>
-          {issue.title}
-          </h2>
+          <>  
+            <div><h1>{issue.title} <span style={{color:"lightgray"}}># {issue.number}</span></h1></div>
+            <div><span><i class="fas fa-folder-open">{issue.state}</i></span> {issue.user.login} opened this issue at <Moment format='MMMM Do YYYY, h:mm:ss a'>{issue.created_at}</Moment>, <span>{issue.comments} comments</span></div>
+            <hr></hr>
+            <div className='markdown'> <Markdown source={issue.body} allowDangerousHtml={true} /> </div>
+            
           </>
         )}
       </div>
