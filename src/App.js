@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import IssueList from './components/IssueList';
-import {BrowserRouter as Router, Switch, Route, Link, Redirect}from 'react-router-dom';
+import {Switch, Route, NavLink, Redirect}from 'react-router-dom';
 import IssueByNumber from './components/IssueByNumber';
+import Users from './components/Users';
 
 
 function App() {
@@ -13,9 +14,12 @@ function App() {
   return (
     <>
     <ul>
-      <li><Link to="/">Home</Link></li>
+      <li><NavLink to="/">Home</NavLink></li>
       { loggedIn && (
-        <li><Link to="/issues">Issues</Link></li>
+        <>
+        <li><NavLink to="/issues">Issues</NavLink></li>
+        <li><NavLink to="/users">Search Users</NavLink></li>
+        </>
       )}
       { loggedIn
         ? (<li><button onClick={() => {setLoggedIn(false)}}>Log Out</button></li>)
@@ -34,6 +38,7 @@ function App() {
           <>
             <Route path="/issues" exact component={IssueList} />
             <Route path="/issue/:number" component={IssueByNumber} />
+            <Route path="/users" component={Users} />
           </>
         )}
 

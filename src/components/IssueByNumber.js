@@ -28,8 +28,14 @@ function IssueByNumber() {
         {issue && (
           <>  
             <div><h1>{issue.title} <span style={{color:"lightgray"}}># {issue.number}</span></h1></div>
-            <div><span><i class="fas fa-folder-open">{issue.state}</i></span> {issue.user.login} opened this issue at <Moment format='MMMM Do YYYY, h:mm:ss a'>{issue.created_at}</Moment>, <span>{issue.comments} comments</span></div>
+
+            <div>
+              <span className='openIcon'>{issue.state}</span> <span className='userLogin'>{issue.user.login}</span> opened this issue at <Moment format='MMMM Do YYYY, h:mm:ss a'>
+              {issue.created_at}</Moment>, <span>{issue.comments} comments</span>
+            </div>
+
             <hr></hr>
+
             <div className='markdown'> <Markdown source={issue.body} allowDangerousHtml={true} /> </div>
             
           </>
