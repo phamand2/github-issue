@@ -1,5 +1,6 @@
-import React from 'react'
-import './UserCard.css'
+import React from 'react';
+import './UserCard.css';
+import {Link} from 'react-router-dom';
 
 function UserCard(props) {
   const { login, avatar_url, type, location, html_url } = props.user
@@ -10,7 +11,7 @@ function UserCard(props) {
       <img src={avatar_url} alt='profile'></img>
     </div>
     <div className='profileDetails'>
-        <h3>{login}</h3> 
+        <Link to={`/users/${login}`}><h3>{login}</h3></Link>
         <ul>
           <li><b>Account Type: </b>{type}</li>
           <li><b>Account Location: </b>{location}</li>

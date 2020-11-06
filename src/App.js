@@ -4,6 +4,7 @@ import IssueList from './components/IssueList';
 import {Switch, Route, NavLink, Redirect}from 'react-router-dom';
 import IssueByNumber from './components/IssueByNumber';
 import Users from './components/Users';
+import UserDetail from './UserDetail';
 
 
 function App() {
@@ -38,7 +39,8 @@ function App() {
           <>
             <Route path="/issues" exact component={IssueList} />
             <Route path="/issue/:number" component={IssueByNumber} />
-            <Route path="/users" component={Users} />
+            <Route exact path="/users" component={Users} />
+            <Route path='/users/:login' component={UserDetail} />
           </>
         )}
 
