@@ -1,0 +1,6 @@
+.container {
+  border: 20px solid #ccc;
+  width:95%;
+  max-width: 100%;
+  margin: 0 auto
+}

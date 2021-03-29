@@ -1,0 +1,15 @@
+.title{
+  text-decoration: none;
+  color: black;
+}
+
+.title:hover{
+  color:red;
+} 
+
+
+.container{
+  border: 1px solid black;
+  padding: 16px 16px;
+}
+

@@ -1,57 +1,13 @@
-import React, { useState } from 'react';
-import './App.css';
-import IssueList from './components/IssueList';
-import {Switch, Route, NavLink, Redirect}from 'react-router-dom';
-import IssueByNumber from './components/IssueByNumber';
-import Users from './components/Users';
-import UserDetail from './UserDetail';
+import React from 'react'
+import IssueList from './Container/IssueList/IssueList'
 
-
-function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false);
-
-
+export const App = () => {
   return (
-    <>
-    <ul>
-      <li><NavLink to="/">Home</NavLink></li>
-      { loggedIn && (
-        <>
-        <li><NavLink to="/issues">Issues</NavLink></li>
-        <li><NavLink to="/users">Search Users</NavLink></li>
-        </>
-      )}
-      { loggedIn
-        ? (<li><button onClick={() => {setLoggedIn(false)}}>Log Out</button></li>)
-        : (<li><button onClick={() => {setLoggedIn(true)}}>Log In</button></li>)
-      }
-    </ul>
-    
     <div>
-      <Switch>
-
-        <Route exact path="/">
-          <h1>Home</h1> 
-        </Route>
-
-        { loggedIn && (
-          <>
-            <Route path="/issues" exact component={IssueList} />
-            <Route path="/issue/:number" component={IssueByNumber} />
-            <Route exact path="/users" component={Users} />
-            <Route path='/users/:login' component={UserDetail} />
-          </>
-        )}
-
-        <Route>
-          <Redirect to="/" />
-        </Route>
-
-      </Switch>
+      <IssueList />
     </div>
-  </>
-  );
+  )
 }
 
-export default App;
+
+export default App
