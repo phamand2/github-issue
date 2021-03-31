@@ -11,17 +11,20 @@ function Users() {
     axios
       .get(`https://api.github.com/users/${userName}`)
       .then((res) => {
+
         if (res.status !== 200) {
-          throw Error(`Could not find user: ${userName}`);
+          return
         }
+
+
         const user = res.data;
         const newUser = [...users];
         newUser.unshift(user);
         setUsers(newUser);
         setUserName("");
       })
-      .catch(() => {
-        alert("No User");
+      .catch((error) => {
+        alert(`No User Found at ${userName}`);
       });
   };
 

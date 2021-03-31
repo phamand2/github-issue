@@ -14,6 +14,7 @@ function IssueByNumber() {
   useEffect(()=>{
   getIssues()
   },[])
+  
 
   const getIssues = async () => {
     const issues = await axios.get(`https://api.github.com/repos/facebook/create-react-app/issues/${number}`);
@@ -21,25 +22,22 @@ function IssueByNumber() {
   }
 
 
-
   return (
     <>
       <div className='IssueDetail'>
-        {issue && (
           <>  
-            <div><h1>{issue.title} <span style={{color:"lightgray"}}># {issue.number}</span></h1></div>
+            <div><h1>{issue?.title} <span style={{color:"lightgray"}}># {issue?.number}</span></h1></div>
 
             <div>
-              <span className='openIcon'>{issue.state}</span> <span className='userLogin'>{issue.user.login}</span> opened this issue at <Moment format='MMMM Do YYYY, h:mm:ss a'>
-              {issue.created_at}</Moment>, <span>{issue.comments} comments</span>
+              <span className='openIcon'>{issue?.state}</span> <span className='userLogin'>{issue?.user?.login}</span> opened this issue at <Moment format='MMMM Do YYYY, h:mm:ss a'>
+              {issue?.created_at}</Moment>, <span>{issue?.comments} comments</span>
             </div>
 
             <hr></hr>
 
-            <div className='markdown'> <Markdown source={issue.body} allowDangerousHtml={true} /> </div>
+            <div className='markdown'> <Markdown source={issue?.body} allowDangerousHtml={true} /> </div>
             
           </>
-        )}
       </div>
       
     </>
