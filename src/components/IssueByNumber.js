@@ -17,8 +17,8 @@ function IssueByNumber() {
   
 
   const getIssues = async () => {
-    const issues = await axios.get(`https://api.github.com/repos/facebook/create-react-app/issues/${number}`);
-    setIssue(issues.data)
+    const {data} = await axios.get(`https://api.github.com/repos/facebook/create-react-app/issues/${number}`);
+    setIssue(data)
   }
 
 
